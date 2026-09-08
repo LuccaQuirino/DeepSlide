@@ -1,0 +1,101 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile in the presentation system",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "favoriteIds": { "type": "array", "items": { "type": "string" } },
+        "savedSharedIds": { "type": "array", "items": { "type": "string" } },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email"]
+    },
+    "Folder": {
+      "title": "Folder",
+      "description": "Folder category for organizing presentations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "isPublic": { "type": "boolean" },
+        "color": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "ownerId"]
+    },
+    "Presentation": {
+      "title": "Presentation",
+      "description": "Interactive presentation slide deck with explanations and quizzes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "presenters": { "type": "array", "items": { "type": "string" } },
+        "date": { "type": "string" },
+        "duration": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "ownerEmail": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "folderId": { "type": "string" },
+        "folderName": { "type": "string" },
+        "isPublic": { "type": "boolean" },
+        "googleSlidesEmbedUrl": { "type": "string" },
+        "slides": { "type": "array" },
+        "explanations": { "type": "array" },
+        "quiz": { "type": "array" },
+        "currentSlideIndex": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "ownerId"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notification for comments on presentations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "recipientId": { "type": "string" },
+        "presentationId": { "type": "string" },
+        "presentationTitle": { "type": "string" },
+        "section": { "type": "string" },
+        "sectionLabel": { "type": "string" },
+        "commentId": { "type": "string" },
+        "commentText": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorPhotoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "recipientId", "presentationId", "commentId", "commentText", "authorId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual user accounts"
+    },
+    "/folders/{folderId}": {
+      "schema": "Folder",
+      "description": "Folders for organizing presentations"
+    },
+    "/presentations/{presentationId}": {
+      "schema": "Presentation",
+      "description": "Shared and individual presentation records"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "Comment notification records"
+    }
+  }
+}

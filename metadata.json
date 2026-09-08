@@ -1,0 +1,7 @@
+{
+  "name": "Presentación Farmacéutica",
+  "description": "Presentación interactiva sobre glucómetros, control glucémico, tecnología farmacéutica y cuestionario de evaluación.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
